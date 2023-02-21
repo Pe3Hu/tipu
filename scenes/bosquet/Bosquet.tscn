@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/tilesets/foresta.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/bosquet/Bosquet.gd" type="Script" id=2]
+
+[node name="Container" type="MarginContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 160, 160 )
+script = ExtResource( 2 )
+
+[node name="Bosquet" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
