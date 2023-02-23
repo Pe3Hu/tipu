@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/albero.png-9ee7e2542b9109b0cc3b60b18ad88293.stex"
+path="res://.import/fog_3.png-8e76e4aabcdad188ccd105dcb150e266.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pngs/albero.png"
-dest_files=[ "res://.import/albero.png-9ee7e2542b9109b0cc3b60b18ad88293.stex" ]
+source_file="res://assets/pngs/bosquet/fog_3.png"
+dest_files=[ "res://.import/fog_3.png-8e76e4aabcdad188ccd105dcb150e266.stex" ]
 
 [params]
 

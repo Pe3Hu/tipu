@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fungo.png-fbea6612e3b7a73a1f57efd79935d8aa.stex"
+path="res://.import/3.png-59b54ce4855c525a12ee65d642dc25ff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pngs/fungo.png"
-dest_files=[ "res://.import/fungo.png-fbea6612e3b7a73a1f57efd79935d8aa.stex" ]
+source_file="res://assets/pngs/numbers/3.png"
+dest_files=[ "res://.import/3.png-59b54ce4855c525a12ee65d642dc25ff.stex" ]
 
 [params]
 

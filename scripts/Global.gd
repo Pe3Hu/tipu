@@ -134,6 +134,10 @@ func _ready():
 
 
 func get_random_element(arr_: Array):
+	if arr_.size() == 0:
+		print("!bug! empty array in get_random_element func")
+		return null
+	
 	rng.randomize()
 	var index_r = rng.randi_range(0, arr_.size()-1)
 	return arr_[index_r]

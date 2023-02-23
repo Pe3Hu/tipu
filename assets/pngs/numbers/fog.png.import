@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/snow.png-972091cd3687ea3ce20968863d3cb310.stex"
+path="res://.import/fog.png-42efd559507a4f67d8eaa3ea0cd854b5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pngs/snow.png"
-dest_files=[ "res://.import/snow.png-972091cd3687ea3ce20968863d3cb310.stex" ]
+source_file="res://assets/pngs/numbers/fog.png"
+dest_files=[ "res://.import/fog.png-42efd559507a4f67d8eaa3ea0cd854b5.stex" ]
 
 [params]
 

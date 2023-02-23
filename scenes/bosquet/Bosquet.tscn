@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/tilesets/foresta.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/tilesets/bosquet.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/bosquet/Bosquet.gd" type="Script" id=2]
 
 [node name="Container" type="MarginContainer"]

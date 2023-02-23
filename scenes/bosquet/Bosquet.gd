@@ -4,11 +4,13 @@ extends MarginContainer
 func full_fill(parent_, type_):
 	for cellulas in parent_.arr.cellula:
 		for cellula in cellulas:
-			var type = type_
+			var type
 			
 			if type_ != "Fog":
 				type = cellula.word.type
-				
+			else:
+				type = type_+"_"+str(cellula.num.fog)
+			
 			fill_cell(cellula.vec.grid,type)
 
 
@@ -29,11 +31,17 @@ func set_tile_by_type(type_):
 			tile = 2
 		"Empty":
 			tile = 3
-		"Fog":
+		"Fog_1":
 			tile = 4
-		"Fungo":
+		"Fog_2":
 			tile = 5
-		"Snow":
+		"Fog_3":
 			tile = 6
+		"Fog_4":
+			tile = 7
+		"Fungo":
+			tile = 8
+		"Snow":
+			tile = 9
 	
 	return tile

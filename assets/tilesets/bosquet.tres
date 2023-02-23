@@ -1,19 +1,19 @@
 [gd_resource type="TileSet" load_steps=11 format=2]
 
-[ext_resource path="res://assets/pngs/bosquet/corpse.png" type="Texture" id=1]
-[ext_resource path="res://assets/pngs/bosquet/empty.png" type="Texture" id=2]
-[ext_resource path="res://assets/pngs/fog_3.png" type="Texture" id=3]
-[ext_resource path="res://assets/pngs/fog_1.png" type="Texture" id=4]
-[ext_resource path="res://assets/pngs/bosquet/snow.png" type="Texture" id=5]
-[ext_resource path="res://assets/pngs/bosquet/fungo.png" type="Texture" id=6]
-[ext_resource path="res://assets/pngs/bosquet/branch.png" type="Texture" id=7]
-[ext_resource path="res://assets/pngs/fog_2.png" type="Texture" id=8]
-[ext_resource path="res://assets/pngs/fog_4.png" type="Texture" id=9]
-[ext_resource path="res://assets/pngs/bosquet/albero.png" type="Texture" id=10]
+[ext_resource path="res://assets/pngs/bosquet/snow.png" type="Texture" id=1]
+[ext_resource path="res://assets/pngs/bosquet/fungo.png" type="Texture" id=2]
+[ext_resource path="res://assets/pngs/bosquet/empty.png" type="Texture" id=3]
+[ext_resource path="res://assets/pngs/bosquet/branch.png" type="Texture" id=4]
+[ext_resource path="res://assets/pngs/bosquet/albero.png" type="Texture" id=5]
+[ext_resource path="res://assets/pngs/bosquet/fog_3.png" type="Texture" id=6]
+[ext_resource path="res://assets/pngs/bosquet/fog_2.png" type="Texture" id=7]
+[ext_resource path="res://assets/pngs/bosquet/fog_1.png" type="Texture" id=8]
+[ext_resource path="res://assets/pngs/bosquet/corpse.png" type="Texture" id=9]
+[ext_resource path="res://assets/pngs/bosquet/fog_4.png" type="Texture" id=10]
 
 [resource]
 0/name = "Albero"
-0/texture = ExtResource( 10 )
+0/texture = ExtResource( 5 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 64, 64 )
@@ -27,7 +27,7 @@
 0/shapes = [  ]
 0/z_index = 0
 1/name = "Branch"
-1/texture = ExtResource( 7 )
+1/texture = ExtResource( 4 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 64, 64 )
@@ -41,7 +41,7 @@
 1/shapes = [  ]
 1/z_index = 0
 2/name = "Corpse"
-2/texture = ExtResource( 1 )
+2/texture = ExtResource( 9 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 64, 64 )
@@ -55,7 +55,7 @@
 2/shapes = [  ]
 2/z_index = 0
 3/name = "Empty"
-3/texture = ExtResource( 2 )
+3/texture = ExtResource( 3 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 0, 0, 64, 64 )
@@ -69,7 +69,7 @@
 3/shapes = [  ]
 3/z_index = 0
 4/name = "Fog1"
-4/texture = ExtResource( 4 )
+4/texture = ExtResource( 8 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 0, 0, 64, 64 )
@@ -83,7 +83,7 @@
 4/shapes = [  ]
 4/z_index = 0
 5/name = "Fog2"
-5/texture = ExtResource( 8 )
+5/texture = ExtResource( 7 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 0, 0, 64, 64 )
@@ -97,7 +97,7 @@
 5/shapes = [  ]
 5/z_index = 0
 6/name = "Fog3"
-6/texture = ExtResource( 3 )
+6/texture = ExtResource( 6 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 0, 0, 64, 64 )
@@ -111,7 +111,7 @@
 6/shapes = [  ]
 6/z_index = 0
 7/name = "Fog4"
-7/texture = ExtResource( 9 )
+7/texture = ExtResource( 10 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 64, 64 )
@@ -125,7 +125,7 @@
 7/shapes = [  ]
 7/z_index = 0
 8/name = "Fungo"
-8/texture = ExtResource( 6 )
+8/texture = ExtResource( 2 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 64, 64 )
@@ -139,7 +139,7 @@
 8/shapes = [  ]
 8/z_index = 0
 9/name = "Snow"
-9/texture = ExtResource( 5 )
+9/texture = ExtResource( 1 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 0, 64, 64 )
