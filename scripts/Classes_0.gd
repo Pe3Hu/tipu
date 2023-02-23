@@ -13,16 +13,42 @@ class Spora:
 		pass
 
 
-class Fungo:
-	var num = {}
+class Dice:
+	var arr = {}
 
 
 	func _init(input_):
+		arr.edge = [1,2,2,2,2,3]
+
+
+	func roll() -> int:
+		return Global.get_random_element(arr.edge)
+
+
+class Fungo:
+	var num = {}
+	var arr = {}
+
+
+	func _init(input_):
+		init_num(input_)
 		init_arr()
 
 
+	func init_num(input_):
+		num.dice = input_.dices
+		num.hp = {}
+		num.hp.max = 10
+		num.hp.current = num.hp.max
+
+
 	func init_arr():
-		pass
+		arr.dice = []
+		
+		for _i in num.dice:
+			var input_ = {}
+			var dice = Classes_0.Dice.new(input_)
+			arr.dice.append(dice)
 
 
 class Albero:
@@ -35,6 +61,36 @@ class Albero:
 
 	func init_arr():
 		pass
+
+
+class Ent:
+	var num = {}
+	var arr = {}
+	var obj = {}
+
+
+	func _init(input_):
+		obj.bosquet = input_.bosquet
+		obj.bosquet.obj.ent = self
+		init_num()
+		init_fungos()
+
+
+	func init_num():
+		num.fungo = {}
+		num.fungo.dice = [5,4,3,2]
+		num.fungo.count = [1,2,3,4]
+
+
+	func init_fungos():
+		arr.fungo = []
+		
+		for _i in num.fungo.dice.size():
+			for _j in num.fungo.count[_i]:
+				var input_ = {}
+				input_.dices = num.fungo.dice[_i]
+				var fungo = Classes_0.Fungo.new(input_)
+				arr.fungo.append(fungo)
 
 
 class Cellula:
@@ -59,6 +115,7 @@ class Bosquet:
 	var num = {}
 	var word = {}
 	var arr = {}
+	var obj = {}
 	var scene = {}
 
 
@@ -66,8 +123,6 @@ class Bosquet:
 		word.side = input_.side
 		init_num()
 		init_arr()
-		init_albero()
-		init_fungos()
 
 
 	func init_num():
@@ -80,6 +135,9 @@ class Bosquet:
 
 	func init_arr():
 		init_cellulas()
+		init_ent()
+		init_albero()
+		init_fungos()
 
 
 	func init_cellulas():
@@ -150,6 +208,12 @@ class Bosquet:
 				cellula.num.fog = districts.size()-_i
 
 
+	func init_ent():
+		var input_ = {}
+		input_.bosquet = self
+		obj.ent = Classes_0.Ent.new(input_)
+
+
 	func init_albero():
 		var options = []
 		var alberos = []
@@ -182,12 +246,9 @@ class Bosquet:
 
 
 	func init_fungos():
-		var sizes = [5,4,3,2]
-		var counts = [1,2,3,4]
-		
-		for _i in sizes.size():
-			var fungo_size = sizes[_i]
-			var fungo_count = counts[_i]
+		for _i in obj.ent.num.fungo.size.size():
+			var fungo_size = obj.ent.num.fungo.size[_i]
+			var fungo_count = obj.ent.num.fungo.count[_i]
 			
 			for _j in fungo_count:
 				var datas = get_syndicates()
@@ -251,7 +312,7 @@ class Bosquet:
 					print("!bug! fungo bigger than syndicate")
 
 
-	func get_syndicates():
+	func get_syndicates() -> Array:
 		var options = []
 		var unions = {}
 		
@@ -332,7 +393,7 @@ class Bosquet:
 		return datas
 
 
-	func check_border(grid_):
+	func check_border(grid_) -> bool:
 		return grid_.x >= 0 && grid_.x < num.cols && grid_.y >= 0 && grid_.y < num.rows
 
 
