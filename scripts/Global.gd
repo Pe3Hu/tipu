@@ -57,6 +57,78 @@ func init_dict():
 		Vector2(-1,-1)
 	]
 	
+	dict.rituel = {}
+	dict.rituel.detail = {
+		"search": [-1],
+		"inspection": [0,1],
+		"elimination": [0,1,2]
+	}
+	
+	dict.price = {}
+	dict.price.search = {}
+	dict.price.search.cellula = {
+		"any": 1,
+		"fungo": 9,
+		"albero": 16
+	}
+	dict.price.search.scatter = {
+		"around": 0,
+		"sprout": 7,
+		"core": 9
+	}
+	dict.price.inspection = {}
+	dict.price.inspection.cellula = {
+		"fungo": 121,
+		"albero": 225
+	}
+	dict.price.inspection.layer = {
+		"0": 1,
+		"1": 2,
+		"2": 3
+	}
+	dict.price.elimination = {}
+	dict.price.inspection.cellula = {
+		"fungo": 289,
+		"albero": 400
+	}
+	dict.price.inspection.layer = {
+		"0": 1,
+		"1": 2,
+		"2": 3
+	}
+	
+	dict.frequency = {}
+	dict.frequency.search = {}
+	dict.frequency.search.cellula = {
+		"any": 9,
+		"fungo": 4,
+		"albero": 1
+	}
+	dict.frequency.search.scatter = {
+		"around": 4,
+		"sprout": 2,
+		"core": 1
+	}
+	dict.frequency.inspection = {}
+	dict.frequency.inspection.cellula = {
+		"fungo": 4,
+		"albero": 1
+	}
+	dict.frequency.inspection.layer = {
+		"0": 1,
+		"1": 2
+	}
+	dict.frequency.elimination = {}
+	dict.frequency.elimination.cellula = {
+		"fungo": 4,
+		"albero": 1
+	}
+	dict.frequency.elimination.layer = {
+		"0": 1,
+		"1": 2,
+		"2": 4
+	}
+	
 	for key in LETRE_COST:
 		var step_size = 0 
 		var begin_size = 0
@@ -99,6 +171,7 @@ func init_arr():
 	arr.sequence["A000124"] = [7, 11, 16] #, 22, 29, 37, 46, 56, 67, 79, 92, 106, 121, 137, 154, 172, 191, 211]
 	arr.sequence["A001358"] = [4, 6, 9, 10, 14, 15, 21, 22, 25, 26]
 	arr.sequence["B000000"] = [2, 3, 5, 8, 10, 13, 17, 20, 24, 29, 33, 38]
+	arr.detail = [-1,0,1,2]
 
 
 func init_node():
@@ -121,6 +194,8 @@ func init_vec():
 func init_scene():
 	scene.bosquet = load("res://scenes/bosquet/Bosquet.tscn")
 	scene.foresta = load("res://scenes/foresta/Foresta.tscn")
+	scene.token = load("res://scenes/token/Token.tscn")
+	scene.rituel = load("res://scenes/rituel/Rituel.tscn")
 
 
 func _ready():

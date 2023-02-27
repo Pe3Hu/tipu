@@ -21,6 +21,11 @@ margin_left = 164.0
 margin_right = 324.0
 margin_bottom = 160.0
 
+[node name="Rituals" type="HBoxContainer" parent="First"]
+margin_left = 328.0
+margin_right = 328.0
+margin_bottom = 160.0
+
 [node name="Second" type="HBoxContainer" parent="."]
 margin_top = 164.0
 margin_right = 1180.0
@@ -33,4 +38,9 @@ margin_bottom = 160.0
 [node name="FirstBosquet" parent="Second" instance=ExtResource( 1 )]
 margin_left = 164.0
 margin_right = 324.0
+margin_bottom = 160.0
+
+[node name="Rituals" type="HBoxContainer" parent="Second"]
+margin_left = 328.0
+margin_right = 328.0
 margin_bottom = 160.0

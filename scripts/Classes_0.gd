@@ -25,6 +25,39 @@ class Dice:
 		return Global.get_random_element(arr.edge)
 
 
+class Token:
+	var word = {}
+
+
+	func _init(input_):
+		word.type = input_.type
+		word.effect = input_.effect
+
+
+class Rituel:
+	var num = {}
+	var word = {}
+	var arr = {}
+	var scene = {}
+	var obj = {}
+
+
+	func _init(input_):
+		word.type = input_.type
+		num.charge = {}
+		num.charge.max = input_.charge
+		num.charge.current = 0
+		arr.token = input_.tokens
+		obj.ent = input_.ent
+		arr.investor = []
+		init_scene()
+
+
+	func init_scene():
+		scene.self = Global.scene.rituel.instance()
+		obj.ent.obj.bosquet.scene.rituels.add_child(scene.self)
+
+
 class Fungo:
 	var num = {}
 	var arr = {}
@@ -66,6 +99,7 @@ class Albero:
 class Ent:
 	var num = {}
 	var arr = {}
+	var dict = {}
 	var obj = {}
 
 
@@ -73,6 +107,7 @@ class Ent:
 		obj.bosquet = input_.bosquet
 		obj.bosquet.obj.ent = self
 		init_num()
+		init_inclinations()
 		init_fungos()
 
 
@@ -80,6 +115,16 @@ class Ent:
 		num.fungo = {}
 		num.fungo.dice = [5,4,3,2]
 		num.fungo.count = [1,2,3,4]
+		num.rituel = {}
+		#num.rituel.current = 0
+		num.rituel.max = 3
+
+
+	func init_inclinations():
+		dict.inclination = {}
+		dict.inclination["search"] = 1
+		dict.inclination["inspection"] = 1
+		dict.inclination["elimination"] = 2
 
 
 	func init_fungos():
@@ -91,6 +136,109 @@ class Ent:
 				input_.dices = num.fungo.dice[_i]
 				var fungo = Classes_0.Fungo.new(input_)
 				arr.fungo.append(fungo)
+
+
+	func init_facts():
+		dict.fact = {}
+		#dict.fact.grid = {}
+		dict.fact.detail = {}
+		
+		for detail in Global.arr.detail:
+			dict.fact.detail[detail] = []
+		
+		for cellulas in obj.enemy_bosquet.arr.cellula:
+			for cellula in cellulas:
+				var input = {}
+				input.grid = cellula.vec.grid
+				input.detail = -1
+				var fact = Classes_0.Fact.new(input)
+				dict.fact.detail[input.detail].append(fact)
+		
+		init_rituels()
+
+
+	func init_rituels():
+		arr.rituel = []
+		update_rituels()
+
+
+	func update_rituels():
+		while arr.rituel.size() < num.rituel.max:
+			add_rituel()
+
+
+	func add_rituel():
+		var options = []
+		
+		for rituel in dict.inclination.keys():
+			var details = Global.dict.rituel.detail[rituel]
+			var data = {}
+			data.count = 0
+			data.rituel = rituel
+			
+			for detail in details:
+				data.count += dict.fact.detail[detail].size()
+			
+			if data.count > 0:
+				for _i in dict.inclination[rituel]:
+					options.append(rituel)
+		
+		
+		
+		var option = Global.get_random_element(options)
+		var datas = [{"type": option}]
+		
+		for key in Global.dict.frequency[option].keys():
+			var datas_ = []
+			
+			for subkey in Global.dict.frequency[option][key].keys():
+				#print(key, " ", subkey, datas_.back())
+				
+				for data in datas:
+					for _i in Global.dict.frequency[option][key][subkey]:
+						var data_ = {}
+						
+						for key_ in data.keys():
+							data_[key_] = data[key_]
+						
+						data_[key] = subkey
+						datas_.append(data_)
+				
+			datas.append_array(datas_)
+		
+		var keys = Global.dict.frequency.inspection.keys().size()+1
+
+		for _i in range(datas.size()-1,-1,-1):
+			var data = datas[_i]
+			
+			if data.keys().size() != keys:
+				datas.erase(data)
+		
+		var data = Global.get_random_element(datas)
+		var input = {}
+		input.type = "#"#data.type
+		input.effect = ""
+		var token = Classes_0.Token.new(input)
+		print(data)
+		input = {}
+		input.type = ""#option.rituel
+		input.charge = 100#option.price
+		input.tokens = []#option.tokens
+		input.ent = self
+		var rituel = Classes_0.Rituel.new(input)
+		arr.rituel.append(rituel)
+
+
+class Fact:
+	var num = {}
+	var vec = {}
+	var obj = {}
+
+
+	func _init(input_):
+		vec.grid = input_.grid
+		num.detail = input_.detail
+		obj.owner = null
 
 
 class Cellula:
@@ -246,15 +394,15 @@ class Bosquet:
 
 
 	func init_fungos():
-		for _i in obj.ent.num.fungo.size.size():
-			var fungo_size = obj.ent.num.fungo.size[_i]
+		for _i in obj.ent.num.fungo.dice.size():
+			var fungo_dices = obj.ent.num.fungo.dice[_i]
 			var fungo_count = obj.ent.num.fungo.count[_i]
 			
 			for _j in fungo_count:
 				var datas = get_syndicates()
 				var syndicate = datas.front().syndicate
 				
-				if syndicate.size() >= fungo_size:
+				if syndicate.size() >= fungo_dices:
 					var min_neighbors = 8
 					
 					for data in syndicate:
@@ -276,7 +424,7 @@ class Bosquet:
 						if option.neighbors.has(data.cellula):
 							neighbors.append(data)
 					
-					while sporas.size() < fungo_size:
+					while sporas.size() < fungo_dices:
 						options = []
 						
 						for data in neighbors:
@@ -294,7 +442,7 @@ class Bosquet:
 						else:
 							"!bug! options for sporas is empty"
 					
-					#print("S ",syndicate.size()," F ",fungo_size, " R ", sporas.size())
+					#print("S ",syndicate.size()," F ",fungo_dices, " R ", sporas.size())
 					
 					for data in sporas:
 						data.cellula.word.type = "Fungo"
@@ -414,8 +562,8 @@ class Foresta:
 
 
 	func init_scene():
-		scene = Global.scene.foresta.instance()
-		Global.node.Game.add_child(scene)
+		scene.self = Global.scene.foresta.instance()
+		Global.node.Game.add_child(scene.self)
 
 
 	func init_bosquets():
@@ -426,15 +574,25 @@ class Foresta:
 			input.side = side
 			dict.bosquet[input.side] = Classes_0.Bosquet.new(input)
 		
+		for _i in Global.SIDE.size():
+			var side = Global.SIDE[_i]
+			var next_side = Global.SIDE[(_i+1)%Global.SIDE.size()]
+			dict.bosquet[side].obj.ent.obj.enemy_bosquet = dict.bosquet[next_side]
+			
+		
 		fill_bosquets()
+		
+		for side in Global.SIDE:
+			dict.bosquet[side].obj.ent.init_facts()
 
 
 	func fill_bosquets():
 		for side in Global.SIDE:
 			for subside in Global.SIDE:
 				var path = side+"/"+subside+"Bosquet"
-				var child_bosquet = scene.get_node(path)
+				var child_bosquet = scene.self.get_node(path)
 				var parent_bosquet = dict.bosquet[side]
+				dict.bosquet[side].scene.rituels = scene.self.get_node(side+"/Rituals")
 				
 				if side == subside:
 					child_bosquet.full_fill(parent_bosquet, "Empty")
