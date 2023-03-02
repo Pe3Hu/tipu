@@ -19,7 +19,7 @@ margin_bottom = 78.0
 margin_right = 100.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 1 )
-text = "Bla"
+text = "Ritual"
 align = 1
 valign = 1
 

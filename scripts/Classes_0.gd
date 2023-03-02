@@ -15,14 +15,18 @@ class Spora:
 
 class Dice:
 	var arr = {}
+	var num = {}
 
 
 	func _init(input_):
+		num.edge = 0
 		arr.edge = [1,2,2,2,2,3]
+		roll()
 
 
-	func roll() -> int:
-		return Global.get_random_element(arr.edge)
+	func roll() -> void:
+		Global.rng.randomize()
+		num.edge = Global.rng.randi_range(0, arr.edge.size()-1)
 
 
 class Token:
@@ -55,7 +59,8 @@ class Rituel:
 
 	func init_scene():
 		scene.self = Global.scene.rituel.instance()
-		obj.ent.obj.bosquet.scene.rituels.add_child(scene.self)
+		var rituals = obj.ent.scene.self.get_child(1).get_node("Rituals")
+		rituals.add_child(scene.self)
 
 
 class Fungo:
@@ -101,6 +106,7 @@ class Ent:
 	var arr = {}
 	var dict = {}
 	var obj = {}
+	var scene = {}
 
 
 	func _init(input_):
@@ -584,15 +590,18 @@ class Foresta:
 		
 		for side in Global.SIDE:
 			dict.bosquet[side].obj.ent.init_facts()
+			
+		for side in Global.SIDE:
+			dict.bosquet[side].obj.ent.scene.self.fill_fungos(dict.bosquet[side].obj.ent)
 
 
 	func fill_bosquets():
 		for side in Global.SIDE:
 			for subside in Global.SIDE:
-				var path = side+"/"+subside+"Bosquet"
+				var path = side+"/Bosquets/"+subside+"Bosquet"
 				var child_bosquet = scene.self.get_node(path)
 				var parent_bosquet = dict.bosquet[side]
-				dict.bosquet[side].scene.rituels = scene.self.get_node(side+"/Rituals")
+				
 				
 				if side == subside:
 					child_bosquet.full_fill(parent_bosquet, "Empty")
@@ -603,6 +612,7 @@ class Foresta:
 				min_size *= Global.vec.size.cellula * Global.vec.scale.bosquet
 				child_bosquet["rect_min_size"] = min_size
 				child_bosquet.get_node("Bosquet")["scale"] = Global.vec.scale.bosquet
+				parent_bosquet.obj.ent.scene.self = scene.self.get_node(side)
 
 
 class Sorter:

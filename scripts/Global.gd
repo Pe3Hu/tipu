@@ -196,6 +196,9 @@ func init_scene():
 	scene.foresta = load("res://scenes/foresta/Foresta.tscn")
 	scene.token = load("res://scenes/token/Token.tscn")
 	scene.rituel = load("res://scenes/rituel/Rituel.tscn")
+	scene.fungo = load("res://scenes/fungo/Fungo.tscn")
+	
+	scene.dice = load("res://scenes/dice/Dice.tscn")
 
 
 func _ready():

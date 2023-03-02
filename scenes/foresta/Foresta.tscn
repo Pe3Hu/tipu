@@ -1,46 +1,30 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scenes/bosquet/Bosquet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Ent/Ent.tscn" type="PackedScene" id=1]
 
-[node name="Foresta" type="VBoxContainer"]
+[node name="Foresta" type="GridContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
 margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+rect_min_size = Vector2( 1160, 760 )
+columns = 3
 
-[node name="First" type="HBoxContainer" parent="."]
-margin_right = 1180.0
-margin_bottom = 160.0
-
-[node name="FirstBosquet" parent="First" instance=ExtResource( 1 )]
-margin_right = 160.0
-margin_bottom = 160.0
-
-[node name="SecondBosquet" parent="First" instance=ExtResource( 1 )]
-margin_left = 164.0
+[node name="First" parent="." instance=ExtResource( 1 )]
 margin_right = 324.0
-margin_bottom = 160.0
+margin_bottom = 164.0
 
-[node name="Rituals" type="HBoxContainer" parent="First"]
+[node name="Space" type="Control" parent="."]
 margin_left = 328.0
-margin_right = 328.0
-margin_bottom = 160.0
+margin_right = 832.0
+margin_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 
-[node name="Second" type="HBoxContainer" parent="."]
-margin_top = 164.0
-margin_right = 1180.0
-margin_bottom = 324.0
-
-[node name="SecondBosquet" parent="Second" instance=ExtResource( 1 )]
-margin_right = 160.0
-margin_bottom = 160.0
-
-[node name="FirstBosquet" parent="Second" instance=ExtResource( 1 )]
-margin_left = 164.0
-margin_right = 324.0
-margin_bottom = 160.0
-
-[node name="Rituals" type="HBoxContainer" parent="Second"]
-margin_left = 328.0
-margin_right = 328.0
-margin_bottom = 160.0
+[node name="Second" parent="." instance=ExtResource( 1 )]
+margin_left = 836.0
+margin_right = 1160.0
+margin_bottom = 164.0
