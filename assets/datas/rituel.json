@@ -1,0 +1,281 @@
+{
+"search any": {
+  "type": "search",
+  "cellula": "any",
+  "scatter": 0,
+  "layer": "-",
+  "frequency": 20,
+  "price": 49,
+  "detail": -1
+},
+"search fungo 0": {
+  "type": "search",
+  "cellula": "fungo",
+  "scatter": 0,
+  "layer": "-",
+  "frequency": 1,
+  "price": 333,
+  "detail": -1
+},
+"search fungo 1": {
+  "type": "search",
+  "cellula": "fungo",
+  "scatter": 1,
+  "layer": "-",
+  "frequency": 2,
+  "price": 198,
+  "detail": -1
+},
+"search fungo 2": {
+  "type": "search",
+  "cellula": "fungo",
+  "scatter": 2,
+  "layer": "-",
+  "frequency": 4,
+  "price": 144,
+  "detail": -1
+},
+"search fungo 3": {
+  "type": "search",
+  "cellula": "fungo",
+  "scatter": 3,
+  "layer": "-",
+  "frequency": 8,
+  "price": 63,
+  "detail": -1
+},
+"search albero 0": {
+  "type": "search",
+  "cellula": "albero",
+  "scatter": 0,
+  "layer": "-",
+  "frequency": 1,
+  "price": 592,
+  "detail": -1
+},
+"search albero 1": {
+  "type": "search",
+  "cellula": "albero",
+  "scatter": 1,
+  "layer": "-",
+  "frequency": 2,
+  "price": 352,
+  "detail": -1
+},
+"search albero 2": {
+  "type": "search",
+  "cellula": "albero",
+  "scatter": 2,
+  "layer": "-",
+  "frequency": 3,
+  "price": 256,
+  "detail": -1
+},
+"search albero 3": {
+  "type": "search",
+  "cellula": "albero",
+  "scatter": 3,
+  "layer": "-",
+  "frequency": 4,
+  "price": 112,
+  "detail": -1
+},
+"inspection fungo 0": {
+  "type": "inspection",
+  "cellula": "fungo",
+  "scatter": "-",
+  "layer": 0,
+  "frequency": 2,
+  "price": 110,
+  "detail": 0
+},
+"inspection fungo 1": {
+  "type": "inspection",
+  "cellula": "fungo",
+  "scatter": "-",
+  "layer": 1,
+  "frequency": 4,
+  "price": 132,
+  "detail": 1
+},
+"inspection fungo 2": {
+  "type": "inspection",
+  "cellula": "fungo",
+  "scatter": "-",
+  "layer": 2,
+  "frequency": 8,
+  "price": 165,
+  "detail": 2
+},
+"inspection albero 0": {
+  "type": "inspection",
+  "cellula": "albero",
+  "scatter": "-",
+  "layer": 0,
+  "frequency": 1,
+  "price": 190,
+  "detail": 0
+},
+"inspection albero 1": {
+  "type": "inspection",
+  "cellula": "albero",
+  "scatter": "-",
+  "layer": 1,
+  "frequency": 3,
+  "price": 228,
+  "detail": 1
+},
+"inspection albero 2": {
+  "type": "inspection",
+  "cellula": "albero",
+  "scatter": "-",
+  "layer": 2,
+  "frequency": 6,
+  "price": 285,
+  "detail": 2
+},
+"elimination fungo sprout 0": {
+  "type": "elimination",
+  "cellula": "fungo",
+  "scatter": "sprout",
+  "layer": 0,
+  "frequency": 1,
+  "price": 340,
+  "detail": 0
+},
+"elimination fungo sprout 1": {
+  "type": "elimination",
+  "cellula": "fungo",
+  "scatter": "sprout",
+  "layer": 1,
+  "frequency": 1,
+  "price": 425,
+  "detail": 1
+},
+"elimination fungo sprout 2": {
+  "type": "elimination",
+  "cellula": "fungo",
+  "scatter": "sprout",
+  "layer": 2,
+  "frequency": 6,
+  "price": 425,
+  "detail": 2
+},
+"elimination fungo sprout 3": {
+  "type": "elimination",
+  "cellula": "fungo",
+  "scatter": "sprout",
+  "layer": 3,
+  "frequency": 8,
+  "price": 595,
+  "detail": 3
+},
+"elimination albero sprout 0": {
+  "type": "elimination",
+  "cellula": "albero",
+  "scatter": "sprout",
+  "layer": 0,
+  "frequency": 1,
+  "price": 600,
+  "detail": 0
+},
+"elimination albero sprout 1": {
+  "type": "elimination",
+  "cellula": "albero",
+  "scatter": "sprout",
+  "layer": 1,
+  "frequency": 1,
+  "price": 750,
+  "detail": 1
+},
+"elimination albero sprout 2": {
+  "type": "elimination",
+  "cellula": "albero",
+  "scatter": "sprout",
+  "layer": 2,
+  "frequency": 10,
+  "price": 750,
+  "detail": 2
+},
+"elimination albero sprout 3": {
+  "type": "elimination",
+  "cellula": "albero",
+  "scatter": "sprout",
+  "layer": 3,
+  "frequency": 12,
+  "price": 1050,
+  "detail": 3
+},
+"elimination fungo core 0": {
+  "type": "elimination",
+  "cellula": "fungo",
+  "scatter": "core",
+  "layer": 0,
+  "frequency": 1,
+  "price": 680,
+  "detail": 0
+},
+"elimination fungo core 1": {
+  "type": "elimination",
+  "cellula": "fungo",
+  "scatter": "core",
+  "layer": 1,
+  "frequency": 1,
+  "price": 850,
+  "detail": 1
+},
+"elimination fungo core 2": {
+  "type": "elimination",
+  "cellula": "fungo",
+  "scatter": "core",
+  "layer": 2,
+  "frequency": 6,
+  "price": 850,
+  "detail": 2
+},
+"elimination fungo core 3": {
+  "type": "elimination",
+  "cellula": "fungo",
+  "scatter": "core",
+  "layer": 3,
+  "frequency": 8,
+  "price": 1190,
+  "detail": 3
+},
+"elimination albero core 0": {
+  "type": "elimination",
+  "cellula": "albero",
+  "scatter": "core",
+  "layer": 0,
+  "frequency": 1,
+  "price": 1200,
+  "detail": 0
+},
+"elimination albero core 1": {
+  "type": "elimination",
+  "cellula": "albero",
+  "scatter": "core",
+  "layer": 1,
+  "frequency": 1,
+  "price": 1500,
+  "detail": 1
+},
+"elimination albero core 2": {
+  "type": "elimination",
+  "cellula": "albero",
+  "scatter": "core",
+  "layer": 2,
+  "frequency": 10,
+  "price": 1500,
+  "detail": 2
+},
+"elimination albero core 3": {
+  "type": "elimination",
+  "cellula": "albero",
+  "scatter": "core",
+  "layer": 3,
+  "frequency": 12,
+  "price": 2100,
+  "detail": 3
+}
+}

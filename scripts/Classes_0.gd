@@ -10,6 +10,7 @@ class Rituel:
 
 
 	func _init(input_):
+		word.name = input_.name
 		word.type = input_.type
 		num.charge = {}
 		num.charge.max = input_.charge
@@ -22,6 +23,7 @@ class Rituel:
 
 	func init_scene():
 		scene.self = Global.scene.rituel.instance()
+		scene.self.set_obj(self)
 		var rituals = obj.ent.scene.self.get_child(1).get_node("Rituals")
 		rituals.add_child(scene.self)
 
@@ -74,6 +76,7 @@ class Ent:
 				input_.dices = num.fungo.dice[_i]
 				Global.rng.randomize()
 				input_.reload = Global.rng.randf_range(1.5, 3)
+				input_.ent = self
 				var fungo = Classes_2.Fungo.new(input_)
 				arr.fungo.append(fungo)
 
@@ -95,9 +98,15 @@ class Ent:
 				dict.fact.detail[input.detail].append(fact)
 		
 		init_rituels()
+		add_rituel()
 
 
 	func init_rituels():
+		var file_path = "res://assets/datas/"
+		var file_name = "rituel"
+		dict.rituel = Global.load_json(file_path,file_name)
+		file_name = "token"
+		dict.token = Global.load_json(file_path,file_name)
 		arr.rituel = []
 		update_rituels()
 
@@ -110,61 +119,42 @@ class Ent:
 	func add_rituel():
 		var options = []
 		
-		for rituel in dict.inclination.keys():
-			var details = Global.dict.rituel.detail[rituel]
-			var data = {}
-			data.count = 0
-			data.rituel = rituel
+		for name_ in dict.rituel.keys():
+			var detail = int(dict.rituel[name_].detail)
 			
-			for detail in details:
-				data.count += dict.fact.detail[detail].size()
-			
-			if data.count > 0:
-				for _i in dict.inclination[rituel]:
-					options.append(rituel)
-		
-		
-		
-		var option = Global.get_random_element(options)
-		var datas = [{"type": option}]
-		
-		for key in Global.dict.frequency[option].keys():
-			var datas_ = []
-			
-			for subkey in Global.dict.frequency[option][key].keys():
-				#print(key, " ", subkey, datas_.back())
+			if dict.fact.detail[detail].size() > 0:
+				var count = dict.rituel[name_].frequency*dict.inclination[dict.rituel[name_].type]
 				
-				for data in datas:
-					for _i in Global.dict.frequency[option][key][subkey]:
-						var data_ = {}
-						
-						for key_ in data.keys():
-							data_[key_] = data[key_]
-						
-						data_[key] = subkey
-						datas_.append(data_)
-				
-			datas.append_array(datas_)
+				for _i in count:
+					options.append(name_)
 		
-		var keys = Global.dict.frequency.inspection.keys().size()+1
-
-		for _i in range(datas.size()-1,-1,-1):
-			var data = datas[_i]
-			
-			if data.keys().size() != keys:
-				datas.erase(data)
-		
-		var data = Global.get_random_element(datas)
+		var rituel_name = Global.get_random_element(options)
 		var input = {}
-		input.type = "#"#data.type
-		input.effect = ""
-		var token = Classes_2.Token.new(input)
-		print(data)
-		input = {}
-		input.type = ""#option.rituel
-		input.charge = 100#option.price
-		input.tokens = []#option.tokens
+		input.name = rituel_name
+		input.type = dict.rituel[rituel_name].type
+		input.charge = 0
+		input.tokens = []
 		input.ent = self
+		
+		Global.rng.randomize()
+		var token_size = Global.rng.randi_range(1, 3)
+		
+		options = []
+		
+		for name_ in dict.token.keys():
+			if dict.token[name_][dict.rituel[rituel_name].type] == 1:
+				options.append(name_)
+		
+		var token_name = Global.get_random_element(options)
+		
+		for _i in token_size:
+			var input_ = {}
+			input.name = token_name
+			input.charge += dict.token[token_name].price
+			var token = Classes_2.Token.new(input)
+			input.tokens.append(token)
+		
+		input.charge *= dict.rituel[rituel_name].price
 		var rituel = Classes_0.Rituel.new(input)
 		arr.rituel.append(rituel)
 

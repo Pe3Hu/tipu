@@ -57,76 +57,9 @@ func init_dict():
 		Vector2(-1,-1)
 	]
 	
-	dict.rituel = {}
-	dict.rituel.detail = {
-		"search": [-1],
-		"inspection": [0,1],
-		"elimination": [0,1,2]
-	}
-	
-	dict.price = {}
-	dict.price.search = {}
-	dict.price.search.cellula = {
-		"any": 1,
-		"fungo": 9,
-		"albero": 16
-	}
-	dict.price.search.scatter = {
-		"around": 0,
-		"sprout": 7,
-		"core": 9
-	}
-	dict.price.inspection = {}
-	dict.price.inspection.cellula = {
-		"fungo": 121,
-		"albero": 225
-	}
-	dict.price.inspection.layer = {
-		"0": 1,
-		"1": 2,
-		"2": 3
-	}
-	dict.price.elimination = {}
-	dict.price.inspection.cellula = {
-		"fungo": 289,
-		"albero": 400
-	}
-	dict.price.inspection.layer = {
-		"0": 1,
-		"1": 2,
-		"2": 3
-	}
-	
-	dict.frequency = {}
-	dict.frequency.search = {}
-	dict.frequency.search.cellula = {
-		"any": 9,
-		"fungo": 4,
-		"albero": 1
-	}
-	dict.frequency.search.scatter = {
-		"around": 4,
-		"sprout": 2,
-		"core": 1
-	}
-	dict.frequency.inspection = {}
-	dict.frequency.inspection.cellula = {
-		"fungo": 4,
-		"albero": 1
-	}
-	dict.frequency.inspection.layer = {
-		"0": 1,
-		"1": 2
-	}
-	dict.frequency.elimination = {}
-	dict.frequency.elimination.cellula = {
-		"fungo": 4,
-		"albero": 1
-	}
-	dict.frequency.elimination.layer = {
-		"0": 1,
-		"1": 2,
-		"2": 4
+	dict.tag = {}
+	dict.tag.clone = {
+		"basic": 1
 	}
 	
 	for key in LETRE_COST:
@@ -171,7 +104,8 @@ func init_arr():
 	arr.sequence["A000124"] = [7, 11, 16] #, 22, 29, 37, 46, 56, 67, 79, 92, 106, 121, 137, 154, 172, 191, 211]
 	arr.sequence["A001358"] = [4, 6, 9, 10, 14, 15, 21, 22, 25, 26]
 	arr.sequence["B000000"] = [2, 3, 5, 8, 10, 13, 17, 20, 24, 29, 33, 38]
-	arr.detail = [-1,0,1,2]
+	arr.detail = [-1,0,1,2,3]
+	arr.rituel = ["search","inspection","elimination"]
 
 
 func init_node():
@@ -197,7 +131,6 @@ func init_scene():
 	scene.token = load("res://scenes/token/Token.tscn")
 	scene.rituel = load("res://scenes/rituel/Rituel.tscn")
 	scene.fungo = load("res://scenes/fungo/Fungo.tscn")
-	
 	scene.dice = load("res://scenes/dice/Dice.tscn")
 
 
@@ -221,19 +154,19 @@ func get_random_element(arr_: Array):
 	return arr_[index_r]
 
 
-func save_json(data_,file_path_,file_name_):
+func save_json(data_,file_path_,file_name_) -> void:
 	var file = File.new()
 	file.open(file_path_+file_name_+".json", File.WRITE)
 	file.store_line(to_json(data_))
 	file.close()
 
 
-func load_json(file_path_,file_name_):
+func load_json(file_path_,file_name_) -> Dictionary:
 	var file = File.new()
 	
 	if not file.file_exists(file_path_+file_name_+".json"):
 			 #save_json()
-			 return null
+			 return {}
 	
 	file.open(file_path_+file_name_+".json", File.READ)
 	var data = parse_json(file.get_as_text())

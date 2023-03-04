@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "MarginContainer",
+"class": "RituelNode",
+"language": "GDScript",
+"path": "res://scenes/rituel/Rituel.gd"
+} ]
+_global_script_class_icons={
+"RituelNode": ""
+}
+
 [application]
 
 config/name="tipu"
