@@ -1,5 +1,8 @@
 extends MarginContainer
 
 
-func set_value(dice) -> void:
-	$Value.text = String(dice.arr.edge[dice.num.edge])
+var obj = {}
+
+
+func set_value() -> void:
+	$Value.text = String(obj.self.arr.edge[obj.self.num.edge])
